@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: blackcode-app
-          path: '${{ github.workspace }}/spring-petclinic/build/libs/*.jar'
+          path: '${{ github.workspace }}/BLACKCODE/build/libs/*.jar'
           # path: '${{ github.workspace }}/target/*.jar' 기본 경로 : build/libs/*.jar
 
   deploy:
