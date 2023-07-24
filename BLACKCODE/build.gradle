@@ -39,7 +39,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	
 	// JSP 관련 의존성 추가
-	implementation 'javax.servlet:jstl'
+	// implementation 'javax.servlet:jstl'
+	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 }
 
