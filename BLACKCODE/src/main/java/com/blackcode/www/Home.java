@@ -8,6 +8,7 @@ public class Home {
 	@GetMapping("/")
 	public String home() {
 		System.out.println("HOME CONTROLLER");
-		return "/index";
+//		return "/index";
+		return "thymeleaf/index.html";
 	}
 }
