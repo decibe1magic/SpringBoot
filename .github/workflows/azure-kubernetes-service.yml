@@ -67,7 +67,7 @@ jobs:
         run : |
           cd BLACKCODE             # 해당 디렉토리로 이동 # 2.프로젝트 변경시 수정사항
           ls -l
-          ./gradle build # Gradle 빌드 실행
+          ./gradlew build # Gradle 빌드 실행
       
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
