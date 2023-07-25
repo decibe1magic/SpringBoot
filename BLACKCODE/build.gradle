@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'war'
+	// id 'war'
 	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.1.2'
 }
@@ -53,5 +53,5 @@ jar {
 }
 
 war {
-	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
+	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.war 생성 비활성
 }
