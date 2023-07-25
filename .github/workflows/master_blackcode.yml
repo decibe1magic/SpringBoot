@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: blackcode-app
-          path: '${{ github.workspace }}/BLACKCODE/build/libs/*.war'
+          path: '${{ github.workspace }}/BLACKCODE/build/libs/*.jar'
           # path: '${{ github.workspace }}/target/*.jar' 기본 경로 : build/libs/*.jar
       
       # artifact 생성 확인
@@ -68,4 +68,4 @@ jobs:
           app-name: 'BlackCode'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3189047D09AC475C990FBF228C90732E }}
-          package: '*.war'
+          package: '*.jar'
