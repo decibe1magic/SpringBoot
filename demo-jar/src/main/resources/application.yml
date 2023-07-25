@@ -1,0 +1,51 @@
+# application.yml : web.xml, root-context.xml, servlet-context.xml의 합본
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+# jsp 기본경로 : /WEB-INF/views/
+# thymeleaf 기본경로 : src/main/resources/templates/
+# 그외 정적파일 : src/main/resources/templates/
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/ 	# Controller가 리턴시 앞에붙는 경로 명
+      suffix: .jsp				# Controller가 리턴시 뒤에붙는 경로 명
+  
+  
+  thymeleaf:
+    cache: false                   # 뭔지 모름
+    prefix: classpath:/templates/  # Thymeleaf 템플릿 파일 경로 설정
+    suffix: .html                  # Thymeleaf 템플릿 파일 확장자 설정
+#    view-names: thymeleaf/*
+    view-names: templates/*
+#    enabled: false                 # 리졸버를 비활성화시 JSP와 둘다 사용가능
+
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
+#    username: cos
+#    password: cos1234
+    
+#  jpa:
+#    open-in-view: true
+#    hibernate:
+#      ddl-auto: create
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      use-new-id-generator-mappings: false
+#    show-sql: true
+#    properties:
+#      hibernate.format_sql: true
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
