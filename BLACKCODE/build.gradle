@@ -49,6 +49,9 @@ tasks.named('test') {
 }
 
 jar {
-	enabled = false
-	destinationDir = file('./')
+	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
+}
+
+war {
+	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
 }
