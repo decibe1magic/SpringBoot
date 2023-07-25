@@ -9,7 +9,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String home() {
 		System.out.println("Start Spring Boot : /");
-		return "/index";
+		return "index";
 	}
 	
 }
