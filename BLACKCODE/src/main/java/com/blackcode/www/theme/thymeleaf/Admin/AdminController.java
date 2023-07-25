@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller	// 해당경로 이하의 파일을 리턴
 public class AdminController {
-	private String path = "/theme/admin-angular/src";
+	private String path = "thymeleaf/theme/Admin-startbootstrap";
 	
 	@GetMapping("/theme/thymeleaf/admin")
 	public String themeIndex() {

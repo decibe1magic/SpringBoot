@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class JSPBusinessController {
-	private String path = "thymeleaf/theme/business-frontpage";
+	private String path = "thymeleaf/theme/business";
 	
 	@GetMapping("/theme/jsp/business")
 	public String themeIndex() {

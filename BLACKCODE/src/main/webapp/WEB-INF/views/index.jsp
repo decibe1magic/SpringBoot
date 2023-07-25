@@ -10,7 +10,7 @@
 	<h1>DevOps Test Project</h1>
 	<br>
 	<h2>Static</h2>
-	<a href="/admin/src/index.html">caminar</a>
+	<a href="/Admin-startbootstrap/index.html">Admin</a>
 	<a href="/business/index.html">business</a>
 	<a href="/caminar/index.html">caminar</a>
 	<hr>
