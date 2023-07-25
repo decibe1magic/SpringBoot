@@ -42,7 +42,11 @@ jobs:
           name: blackcode-app
           path: '${{ github.workspace }}/BLACKCODE/build/libs/*.jar'
           # path: '${{ github.workspace }}/target/*.jar' 기본 경로 : build/libs/*.jar
-
+      
+      # artifact 생성 확인
+      - name: List files in build/libs directory
+        run: ls BLACKCODE/build/libs
+      
   deploy:
     runs-on: ubuntu-latest
     needs: build
