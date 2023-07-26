@@ -115,6 +115,6 @@ jobs:
         with:
           action: deploy
 #           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-          manifests: deployment.yaml
+          manifests: ./aks-manifest/deployment.yaml
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
