@@ -60,19 +60,19 @@ jobs:
       #Build 추가
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-        working-directory: BLACKCODE # 1.프로젝트 변경시 수정사항
+        working-directory: demo-jar # 1.프로젝트 변경시 수정사항
       
       # Gradle build 진행
       - name: Build with Gradle
         run : |
-          cd BLACKCODE             # 해당 디렉토리로 이동 # 2.프로젝트 변경시 수정사항
+          cd demo-jar             # 해당 디렉토리로 이동 # 2.프로젝트 변경시 수정사항
           ls -l
           ./gradlew build # Gradle 빌드 실행
       
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
         run: |
-          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ./BLACKCODE
+          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ./demo-jar
 
   deploy:
     permissions:
