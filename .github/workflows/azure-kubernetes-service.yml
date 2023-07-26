@@ -108,7 +108,11 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           admin: 'false'
           use-kubelogin: 'true'
-
+      
+      # yaml 파일 확인
+      - name: check path
+        run: ls -lR
+      
       # Deploys application based on given manifest file
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
