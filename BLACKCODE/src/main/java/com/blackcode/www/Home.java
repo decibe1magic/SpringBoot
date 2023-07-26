@@ -12,3 +12,6 @@ public class Home {
 		return "thymeleaf/index.html";
 	}
 }
+
+// Github token
+// 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
