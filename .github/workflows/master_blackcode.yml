@@ -68,4 +68,4 @@ jobs:
           app-name: 'BlackCode'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3189047D09AC475C990FBF228C90732E }}
-          package: '*.war'
+          package: '*SNAPSHOT.war'
