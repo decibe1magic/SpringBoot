@@ -21,18 +21,19 @@ jobs:
         with:
           java-version: '17'
             
-      # gradle buile를 위한 권한 부여
+      # 수정내역 
+      # 1. gradle buile를 위한 권한 부여
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         working-directory: BLACKCODE # 1.프로젝트 변경시 수정사항
       
-      # Gradle build 진행
+      # 2. Gradle build 진행
       - name: Build with Gradle
         run : |
           cd BLACKCODE             # 해당 디렉토리로 이동 # 2.프로젝트 변경시 수정사항
           ./gradlew build -x test # Gradle 빌드 실행
       
-      # 배포할 파일의 경로를 확인
+      # 3. 배포할 파일의 경로를 확인
       - name: Check path
         run: ls -lR
       
@@ -43,7 +44,7 @@ jobs:
           path: '${{ github.workspace }}/BLACKCODE/build/libs/*.war' # 3.프로젝트 변경시 수정사항
           # path: '${{ github.workspace }}/<프로젝트명>/build/libs/*.jar'
       
-      # artifact 생성 확인
+      # 4. artifact 생성 확인
       - name: List files in build/libs directory
         run: ls BLACKCODE/build/libs # 4.프로젝트 변경시 수정사항
       
@@ -68,4 +69,5 @@ jobs:
           app-name: 'BlackCode'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3189047D09AC475C990FBF228C90732E }}
+          # package: '*.ar'
           package: '*SNAPSHOT.war'
