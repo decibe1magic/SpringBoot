@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BLACKCODE/src/main/java"/>
+	<classpathentry kind="src" path="BLACKCODE/src/test/java"/>
+	<classpathentry kind="src" path="demo-jar/src/main/java"/>
+	<classpathentry kind="src" path="demo-jar/src/test/java"/>
+	<classpathentry kind="src" path="demo-war/src/main/java"/>
+	<classpathentry kind="src" path="demo-war/src/test/java"/>
+	<classpathentry kind="lib" path="BLACKCODE/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="demo-jar/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="demo-war/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
