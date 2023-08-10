@@ -36,7 +36,6 @@ public class ChatController {
 		System.out.println(chatService.findAllRoom().toString());
 		List<ChatRoom> list = chatService.findAllRoom();
 		modelAndView.addObject("rooms",list);
-//		return chatService.findAllRoom();
 		return modelAndView;
 	}
 	
@@ -44,6 +43,14 @@ public class ChatController {
 	public ModelAndView createRoom_page() {
 		ModelAndView modelAndView = new ModelAndView("chat/CreateRoom");
 		System.out.println("CREATE ROOM");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/join")
+	public ModelAndView joinRoom_page(@RequestParam String roomId) {
+		ModelAndView modelAndView = new ModelAndView("chat/JoinRoom");
+		System.out.println("JOIN ROOM"+ roomId);
+		modelAndView.addObject("room",chatService.findRoomById(roomId));
 		return modelAndView;
 	}
 }
