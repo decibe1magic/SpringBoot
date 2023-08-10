@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Configuration;
 
  import lombok.RequiredArgsConstructor;
 
- @RequiredArgsConstructor
- @Configuration
- @EnableWebSocket
- public class WebSockConfig implements WebSocketConfigurer {
-     private final WebSocketHandler webSocketHandler;
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSocket
+public class WebSockConfig implements WebSocketConfigurer {
+	private final WebSocketHandler webSocketHandler;
 
-     @Override
-     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-         registry.addHandler(webSocketHandler, "ws").setAllowedOrigins("*");
-     }
- }
+	@Override
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		registry.addHandler(webSocketHandler, "ws").setAllowedOrigins("*");
+	}
+}

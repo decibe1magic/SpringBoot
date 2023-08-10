@@ -41,11 +41,11 @@ $(document).ready(function(){
 		}
 		
 		$.ajax({
-			type:'post',		//post 방식으로 전송
-			url:'/chat',		//데이터를 주고받을 파일 주소
-			data:data,			//위의 변수에 담긴 데이터를 전송해준다.
-			dataType:'json',	//html 파일 형식으로 값을 담아온다.
-			success : function(data){		//파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
+			type:'post',				//post 방식으로 전송
+			url:'/chat',				//데이터를 주고받을 파일 주소
+			data:data,					//위의 변수에 담긴 데이터를 전송해준다.
+			dataType:'json',			//html 파일 형식으로 값을 담아온다.
+			success : function(data){	//파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
 				console.log(data)
 				$('#ChattingRoomList').append(
 					'<tr>'

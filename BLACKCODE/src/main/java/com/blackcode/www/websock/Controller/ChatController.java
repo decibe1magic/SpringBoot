@@ -1,6 +1,7 @@
 package com.blackcode.www.websock.Controller;
 //import java.util.List;
 
+import java.net.http.WebSocket;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,29 +29,28 @@ public class ChatController {
 		return chatService.createRoom(name);
 	}
 	
-//	@GetMapping
 	@RequestMapping("/rooms")
 	public ModelAndView selectRoom_page() {
 		ModelAndView modelAndView = new ModelAndView("chat/Chatrooms");
-//		modelAndView.setViewName("chat/Chatrooms");	//page 위치
-		System.out.println(chatService.findAllRoom().toString());
+		System.out.println(chatService.findAllRoom());
 		List<ChatRoom> list = chatService.findAllRoom();
 		modelAndView.addObject("rooms",list);
 		return modelAndView;
 	}
 	
-	@RequestMapping("/create")
-	public ModelAndView createRoom_page() {
-		ModelAndView modelAndView = new ModelAndView("chat/CreateRoom");
-		System.out.println("CREATE ROOM");
-		return modelAndView;
-	}
+//	@RequestMapping("/create")
+//	public ModelAndView createRoom_page() {
+//		ModelAndView modelAndView = new ModelAndView("chat/CreateRoom");
+//		System.out.println("CREATE ROOM");
+//		return modelAndView;
+//	}
 	
 	@RequestMapping("/join")
 	public ModelAndView joinRoom_page(@RequestParam String roomId) {
 		ModelAndView modelAndView = new ModelAndView("chat/JoinRoom");
-		System.out.println("JOIN ROOM"+ roomId);
+		System.out.println("JOIN ROOM : "+ roomId);
 		modelAndView.addObject("room",chatService.findRoomById(roomId));
+		
 		return modelAndView;
 	}
 }

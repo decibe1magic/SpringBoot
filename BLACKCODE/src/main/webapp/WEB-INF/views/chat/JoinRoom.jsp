@@ -34,10 +34,12 @@
 	webSocket.onmessage = function(event) {
 		onMessage(event)
 	};
+	
+	console.log(webSocket)
 	function onMessage(event) {
-		var message = event.data.split("|");
-		var sender = message[0];
-		var content = message[1];
+		var message = event.data
+		var sender = message.substring(message.indexOf("sender")+9,message.indexOf("message")-3)
+		var content = message.slice(message.indexOf("message")+10,-2)
 		if (content == "") {
 
 		} else {

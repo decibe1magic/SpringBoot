@@ -39,19 +39,27 @@ dependencies {
 	// 타임리프
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	
-	// JSP 관련 의존성 추가
+	// JSP
 	// implementation 'javax.servlet:jstl'
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	
+	// Debug 관련 의존성 추가
+	implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
-jar {
-	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
+// Debug 관련 의존성 추가
+bootRun {
+   jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
 }
+
+//jar {
+//	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
+//}
 
 //war {
 //	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.war 생성 비활성

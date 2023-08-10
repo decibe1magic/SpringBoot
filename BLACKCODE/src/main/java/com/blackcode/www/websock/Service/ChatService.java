@@ -35,7 +35,8 @@ import lombok.extern.slf4j.Slf4j;
       }
         
       public ChatRoom findRoomById(String roomId) {
-          return chatRooms.get(roomId);
+    	  ChatRoom chatRoom = chatRooms.get(roomId.replaceAll(",", ""));
+          return chatRoom;
       }
         
       public ChatRoom createRoom(String name) {
