@@ -85,7 +85,11 @@
 		alert(event.data);
 	}
 	
+	var count = 0;
 	function send() {
+		
+		count++;
+		var type = "ENTER";
 		
 		if (message.value == "" | message.value == null) {
 		} else {
@@ -94,8 +98,11 @@
 							+ message.value + "</p>");
 		}
 		//webSocket.send($("#sender").val() + "|" + message.value);
+		if(count > 1){
+			type = "TALK"
+		}
 		data={
-				"type"   :"TALK",
+				"type"   :type,
 				"roomId" :$('input[name=roomId]').val(),
 				"sender" :$('input[name=sender]').val(),
 				"message":$('input[name=message]').val()

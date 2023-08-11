@@ -30,14 +30,14 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		String msg = message.getPayload();
 		log.info(">>{}", msg);
 		
-		for(String key : sessionMap.keySet()) {
-			WebSocketSession wss = sessionMap.get(key);
-			try {
-				wss.sendMessage(new TextMessage(msg));
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		for(String key : sessionMap.keySet()) {
+//			WebSocketSession wss = sessionMap.get(key);
+//			try {
+//				wss.sendMessage(new TextMessage(msg));
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
 		ChatMessage chatMessage = objectMapper.readValue(msg, ChatMessage.class);
 		ChatRoom chatRoom = chatService.findRoomById(chatMessage.getRoomId());
