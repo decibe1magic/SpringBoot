@@ -45,7 +45,7 @@ dependencies {
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	
 	// Debug 관련 의존성 추가
-	implementation 'org.springframework.boot:spring-boot-devtools'
+	//implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {
@@ -53,9 +53,9 @@ tasks.named('test') {
 }
 
 // Debug 관련 의존성 추가
-bootRun {
-   jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
-}
+//bootRun {
+//   jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000'
+//}
 
 //jar {
 //	enabled = false // BLACKCODE-0.0.1-SNAPSHOT-plain.jar 생성 비활성
