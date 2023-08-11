@@ -4,6 +4,7 @@ package com.blackcode.www.websock.Controller;
 import java.net.http.WebSocket;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,5 +53,11 @@ public class ChatController {
 		modelAndView.addObject("room",chatService.findRoomById(roomId));
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping("/delete")
+	public boolean deleteRoom(@RequestParam String roomId) {
+		System.out.println("JOIN ROOM : "+ roomId);
+		return chatService.deleteRoom(roomId);
 	}
 }

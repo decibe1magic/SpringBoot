@@ -1,4 +1,5 @@
 package com.blackcode.www.websock;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class WebSocketHandler extends TextWebSocketHandler {
 	private final ObjectMapper objectMapper;
 	private final ChatService chatService;
+	private final HashMap<WebSocketSession, String> roomlist = new HashMap<>();
 	HashMap<String, WebSocketSession> sessionMap = new HashMap<>(); //웹소켓 세션을 담아둘 맵
 	
 	@Override
@@ -30,23 +32,16 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		String msg = message.getPayload();
 		log.info(">>{}", msg);
 		
-//		for(String key : sessionMap.keySet()) {
-//			WebSocketSession wss = sessionMap.get(key);
-//			try {
-//				wss.sendMessage(new TextMessage(msg));
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-		
 		ChatMessage chatMessage = objectMapper.readValue(msg, ChatMessage.class);
 		ChatRoom chatRoom = chatService.findRoomById(chatMessage.getRoomId());
+		roomlist.put(session, chatMessage.getRoomId());
 		chatRoom.handlerActions(session, chatMessage, chatService);
  	}
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//소켓 연결
+		System.out.println("[WEBSOCKET] Connect : "+ session);
 		super.afterConnectionEstablished(session);
 		sessionMap.put(session.getId(), session);
 	}
@@ -54,6 +49,12 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		//소켓 종료
+		System.out.println("[WEBSOCKET] DisConnect : " + session);
+		
+		System.out.println("roomlist.get(session) :"+roomlist.get(session));
+		ChatRoom chatRoom = chatService.findRoomById(roomlist.get(session));
+		chatRoom.sessionDistroy(session);
+		
 		sessionMap.remove(session.getId());
 		super.afterConnectionClosed(session, status);
 	}

@@ -31,10 +31,17 @@ public class ChatRoom {
 			chatMessage.setMessage(chatMessage.getSender() + "님이 입장했습니다.");
 		}
 		sendMessage(chatMessage, chatService);
+		System.out.println("세션길이 : "+sessions.size());
 	}
 	
 	private <T> void sendMessage(T message, ChatService chatService) {
 		sessions.parallelStream()
 				.forEach(session -> chatService.sendMessage(session, message));
+	}
+	
+	public void sessionDistroy(WebSocketSession session) {
+		System.out.println("세션길이 : "+sessions.size());
+		sessions.remove(session);
+		System.out.println("세션길이 : "+sessions.size());
 	}
 }
