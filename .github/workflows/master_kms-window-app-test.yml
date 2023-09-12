@@ -19,7 +19,7 @@ jobs:
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
-          java-version: '17'
+          java-version: '11'
 
       # 수정내역 
       # 1. gradle buile를 위한 권한 부여
