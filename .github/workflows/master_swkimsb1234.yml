@@ -27,26 +27,7 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build -x test
         working-directory: BLACKCODE
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/BLACKCODE/build/libs/*.war'
-
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: java-app
-
+        
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -54,5 +35,25 @@ jobs:
           app-name: 'swkimsb1234'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7689C9DE0F6743FD9BC7D0D1210D872E }}
-          package: '*SNAPSHOT.war'
-          remove-package: true
+          package: '${{ github.workspace }}/BLACKCODE/build/libs/*SNAPSHOT.war'
+
+      # - name: Upload artifact for deployment job
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: java-app
+      #     path: '${{ github.workspace }}/BLACKCODE/build/libs/*.war'
+
+  # deploy:
+  #   runs-on: windows-latest
+  #   needs: build
+  #   environment:
+  #     name: 'Production'
+  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+  #   steps:
+  #     - name: Download artifact from build job
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: java-app
+
+
