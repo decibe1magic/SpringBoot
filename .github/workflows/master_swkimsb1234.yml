@@ -27,6 +27,10 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build -x test
         working-directory: BLACKCODE
+
+      - name: Rename War File
+        run: mv BLACKCODE-0.0.1-SNAPSHOT.war ROOT.war
+        working-directory: BLACKCODE/build/libs
         
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -35,7 +39,7 @@ jobs:
           app-name: 'swkimsb1234'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7689C9DE0F6743FD9BC7D0D1210D872E }}
-          package: '${{ github.workspace }}/BLACKCODE/build/libs/*SNAPSHOT.war'
+          package: '${{ github.workspace }}/BLACKCODE/build/libs/ROOT.war'
 
       # - name: Upload artifact for deployment job
       #   uses: actions/upload-artifact@v2
