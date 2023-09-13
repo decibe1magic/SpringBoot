@@ -21,14 +21,18 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+    
+      - name: Execute Gradle build
+        run: ./gradlew build -x test
+        working-directory: BLACKCODE
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/BLACKCODE/build/libs/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -50,4 +54,4 @@ jobs:
           app-name: 'swkimsb1234'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7689C9DE0F6743FD9BC7D0D1210D872E }}
-          package: '*.jar'
+          package: '*SNAPSHOT.war'
