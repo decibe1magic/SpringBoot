@@ -55,3 +55,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7689C9DE0F6743FD9BC7D0D1210D872E }}
           package: '*SNAPSHOT.war'
+          remove-package: true
